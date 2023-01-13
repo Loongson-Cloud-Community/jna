@@ -13,8 +13,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        java: [8, 11, 17, 19, 20-ea]
-        os: [ubuntu-latest, macos-latest]
+        java: [8, 11, 17]
+        os: [macos-latest]
       # Run all tests even if one fails
       fail-fast: false
     name: Test JDK ${{ matrix.java }}, ${{ matrix.os }}

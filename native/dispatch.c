@@ -2269,6 +2269,7 @@ Java_com_sun_jna_Native_open(JNIEnv *env, jclass UNUSED(cls), jstring lib, jint 
     }
 
     handle = (void *)LOAD_LIBRARY(libname, flags);
+    printf("dlopen(%s) => %ld\n", libname, (long) handle);
 #if defined(_WIN32)
     /** Reattempt lookup using the short name version */
     if (!handle) {
@@ -2300,9 +2301,12 @@ JNIEXPORT void JNICALL
 Java_com_sun_jna_Native_close(JNIEnv *env, jclass UNUSED(cls), jlong handle)
 {
   if (FREE_LIBRARY(L2A(handle))) {
+    printf("dlclose(%ld) - fail\n", handle);
     char* buf = LOAD_ERROR();
     throwByName(env, EError, buf);
     free(buf);
+  } else {
+    printf("dlclose(%ld) - success\n", handle);
   }
 }
 

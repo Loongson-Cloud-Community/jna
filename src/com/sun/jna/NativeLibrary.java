@@ -1064,6 +1064,7 @@ public class NativeLibrary implements Closeable {
         public synchronized void run() {
             if (handle != 0) {
                 try {
+                    System.out.printf("Closing: %d%n", handle);
                     Native.close(handle);
                 } finally {
                     handle = 0;

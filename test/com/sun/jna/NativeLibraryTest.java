@@ -82,12 +82,20 @@ public class NativeLibraryTest extends TestCase {
     }
 
     public void testAvoidDuplicateLoads() throws Exception {
+        // Ensure the call count is non-zero before the actual test
+        TestLibrary lib2 = Native.load("testlib", TestLibrary.class);
+        lib2.callCount();
+        lib2.callCount();
+        System.out.println("DISPOSE ALL");
         NativeLibrary.disposeAll();
         // Give the system a moment to unload the library; on OSX we
         // occasionally get the same library handle back on subsequent dlopen
-        Thread.sleep(2);
+        Thread.sleep(2000);
+        System.out.println("SLEEP");
 
+        System.out.println("LOAD");
         TestLibrary lib = Native.load("testlib", TestLibrary.class);
+        System.out.println("CHECK");
         assertEquals("Library should be newly loaded after explicit dispose of all native libraries",
                      1, lib.callCount());
         if (lib.callCount() <= 1) {

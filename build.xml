@@ -1388,7 +1388,10 @@ cd ..
     <propertyset id="headless">
       <propertyref prefix="java.awt.headless"/>
     </propertyset>
-    <junit fork="${test.fork}" forkmode="${test.forkmode}" failureproperty="testfailure" tempdir="${build}">
+    <junit fork="yes" forkmode="${test.forkmode}" failureproperty="testfailure" tempdir="${build}">
+      <env key="DYLD_PRINT_APIS" value="1" />
+      <env key="DYLD_PRINT_LIBRARIES_POST_LAUNCH" value="1" />
+
       <jvmarg if:set="test.jdwp" value="${test.jdwp}" />
       <!-- optionally run headless -->
       <syspropertyset refid="headless"/>
@@ -1403,13 +1406,7 @@ cd ..
       <classpath><path refid="test.runpath"/></classpath>
       <formatter type="brief" usefile="false"/>
       <formatter type="xml"/>
-      <batchtest todir="${results.junit}">
-        <fileset dir="${test.src}" excludes="${tests.exclude-patterns}">
-          <patternset includes="${tests.include}"/>
-          <include name="${tests.platform}"/>
-          <exclude name="${tests.exclude}"/>
-        </fileset>
-      </batchtest>
+      <test name="com.sun.jna.NativeLibraryTest" methods="testAvoidDuplicateLoads" />
     </junit>
     <junitreport todir="${results.junit}">
       <fileset dir="${results.junit}">
