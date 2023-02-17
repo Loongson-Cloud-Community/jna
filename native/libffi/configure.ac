@@ -193,6 +193,10 @@ case "$host" in
 	TARGET=IA64; TARGETDIR=ia64
 	;;
 
+  loongarch64-*-*)
+        TARGET=LOONGARCH64; TARGETDIR=loongarch64
+        ;;
+
   m32r*-*-*)
 	TARGET=M32R; TARGETDIR=m32r
 	;;

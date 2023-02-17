@@ -224,7 +224,7 @@ public final class Native implements Version {
             setProtected(true);
         }
         MAX_ALIGNMENT = Platform.isSPARC() || Platform.isWindows()
-            || (Platform.isLinux() && (Platform.isARM() || Platform.isPPC() || Platform.isMIPS()))
+            || (Platform.isLinux() && (Platform.isARM() || Platform.isPPC() || Platform.isMIPS()) || Platform.isLoongArch())
             || Platform.isAIX()
             || Platform.isAndroid()
             ? 8 : LONG_SIZE;

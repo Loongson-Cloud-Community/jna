@@ -46,6 +46,7 @@ EXTRA_DIST = LICENSE ChangeLog.v1 ChangeLog.libgcj			\
 	 src/tile/ffitarget.h src/tile/tile.S libtool-version		\
 	 src/vax/ffi.c src/vax/ffitarget.h src/vax/elfbsd.S		\
 	 src/xtensa/ffitarget.h src/xtensa/ffi.c src/xtensa/sysv.S	\
+	 src/loongarch64/ffitarget.h src/loongarch64/ffi.c src/loongarch64/sysv.S  \
 	 ChangeLog.libffi m4/libtool.m4 m4/lt~obsolete.m4		\
 	 m4/ltoptions.m4 m4/ltsugar.m4 m4/ltversion.m4			\
 	 m4/ltversion.m4 src/arm/gentramp.sh src/debug.c msvcc.sh	\

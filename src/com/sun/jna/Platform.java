@@ -194,6 +194,7 @@ public final class Platform {
             || "ppc64".equals(ARCH) || "ppc64le".equals(ARCH)
             || "sparcv9".equals(ARCH)
             || "mips64".equals(ARCH) || "mips64el".equals(ARCH)
+	    || "loongarch64".equals(ARCH)
             || "amd64".equals(ARCH)) {
             return true;
         }
@@ -230,6 +231,10 @@ public final class Platform {
             return true;
         } 
         return false;
+    }
+
+    public static final boolean isLoongArch() {
+        return ARCH.startsWith("loongarch");
     }
 
     static String getCanonicalArchitecture(String arch, int platform) {
